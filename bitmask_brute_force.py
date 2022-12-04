@@ -20,7 +20,7 @@ def bitmask_brute_force(ls):
     return res
 
 
-A = list(range(1,5))
+A = list(range(1,4))
 B = bitmask_brute_force(A)
 print(B)
 """
