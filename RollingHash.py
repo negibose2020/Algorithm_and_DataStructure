@@ -23,7 +23,7 @@ class RollingHash():
         res %= self.mod
         return res
 
-
+"""
 # pass ABC141-E Who Says a Pun?
 # https://atcoder.jp/contests/abc141/tasks/abc141_e
 def f(d):
@@ -52,3 +52,4 @@ while ng-ok>1:
     else:
         ng=mid
 print(ok)
+"""
