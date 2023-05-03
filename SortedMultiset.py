@@ -129,3 +129,22 @@ class SortedMultiset(Generic[T]):
                 return ans + bisect_right(a, x)
             ans += len(a)
         return ans
+
+"""
+# pass Library Checker
+# https://judge.yosupo.jp/problem/double_ended_priority_queue
+n,q=map(int,input().split())
+S=SortedMultiset(map(int,input().split()))
+for i in range(q):
+    l = list(map(int,input().split()))
+    if l[0]==0:
+        S.add(l[1])
+    elif l[0]==1:
+        m=S[0]
+        print(m)
+        S.discard(m)
+    else:
+        m=S[-1]
+        print(m)
+        S.discard(m)
+"""
