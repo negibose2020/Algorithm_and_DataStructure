@@ -22,3 +22,33 @@ class RollingHash():
         res = self.poshash[r] - self.poshash[l]*self.pow_base[r-l]
         res %= self.mod
         return res
+
+
+# pass ABC141-E Who Says a Pun?
+# https://atcoder.jp/contests/abc141/tasks/abc141_e
+def f(d):
+    dic=dict()
+    for i in range(n-d+1):
+        h=rh.get(i,i+d)
+        if h not in dic:
+            dic[h]=[]
+        dic[h].append(i)
+    # print(dic)
+    for k,v in dic.items():
+        if min(v)+d <= max(v):
+            return True
+    return False
+
+n=int(input())
+s=input()
+rh=RollingHash(s)
+
+ok=0
+ng=n
+while ng-ok>1:
+    mid=(ok+ng)//2
+    if f(mid):
+        ok=mid
+    else:
+        ng=mid
+print(ok)
