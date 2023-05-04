@@ -69,3 +69,29 @@ while ng-ok>1:
         ng=mid
 print(ok)
 """
+
+"""
+# pass ABC284    F - ABCBAC
+# https://atcoder.jp/contests/abc284/tasks/abc284_f
+
+n=int(input())
+t=input()
+r=t[::-1]
+rh_t=RollingHash(t)
+rh_r=RollingHash(r)
+
+# t="abcbac"
+# r="cabcba"
+
+for i in range(n):
+    abc=rh_t.get(0,i)
+    abc2=rh_t.get(2*n-n+i,2*n)
+    abc=rh_t.connect(abc,abc2,n-i)
+    cba=rh_r.get(n-i,n-i+n)
+    if abc==cba:
+        print(r[n-i:n-i+n])
+        print(i)
+        exit()
+print(-1)
+
+"""
