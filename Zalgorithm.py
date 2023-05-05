@@ -21,3 +21,6 @@ def Zalgorithm(S):
 s=input()
 a=Zalgorithm(s)
 print(*a)
+
+# pass Library Checker Z Algorithm
+# https://judge.yosupo.jp/problem/zalgorithm
