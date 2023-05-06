@@ -1,5 +1,10 @@
 class SegmentTree:
     def __init__(self, e, func, ls):
+        """
+        e       :   単位元
+        func    :   演算
+        ls      :   配列
+        """
         self.e = e
         self.func = func
         self.size = 1
@@ -33,3 +38,20 @@ class SegmentTree:
             l >>= 1
             r >>= 1
         return self.func(val_l, val_r)
+
+
+# pass ABC185 F - Range Xor Query
+# https://atcoder.jp/contests/abc185/tasks/abc185_f
+n,q=map(int,input().split())
+a=list(map(int,input().split()))
+def fn(x,y):
+    return x^y
+e=0
+st=SegmentTree(e,fn,a)
+for i in range(q):
+    t,x,y=map(int,input().split())
+    if t==1:
+        a[x-1]^=y
+        st.update(x-1,a[x-1])
+    else:
+        print(st.fold(x-1,y))
