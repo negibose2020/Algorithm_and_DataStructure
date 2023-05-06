@@ -1,3 +1,5 @@
+# BIT全探索
+# bit全探索
 def bitmask_brute_force(ls):
     """
     return : [ list, list, ..., list ]
