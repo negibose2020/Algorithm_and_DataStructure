@@ -1,3 +1,5 @@
+# 座標圧縮
+# 座圧
 def coordinate_compression(ls):
     sortedls = sorted(set(ls))
     dic = {v:i for i,v in enumerate(sortedls)}
