@@ -55,3 +55,15 @@ def inversion_number(ls):
         # print(segtree.node[len(segtree.node)//2:],inv_num)
     return inv_num
 
+
+"""
+# pass ABC190 F - Shift and Inversions
+# https://atcoder.jp/contests/abc190/tasks/abc190_f
+n=int(input())
+a=list(map(int,input().split()))
+ans=inversion_number(a)
+for i in range(n):
+    print(ans)
+    ans+=n-1-a[i]
+    ans-=a[i]
+"""
