@@ -20,7 +20,7 @@ class SegmentTree:
         idx += self.size
         return self.node[idx]
 
-    def update(self, idx, value):
+    def set_value(self, idx, value):
         idx += self.size
         self.node[idx] = value
         while idx > 1:
@@ -57,6 +57,6 @@ for i in range(q):
     if t==1:
         v=st.get_value(x-1)
         # a[x-1]^=y
-        st.update(x-1,v^y)
+        st.set_value(x-1,v^y)
     else:
         print(st.fold(x-1,y))
