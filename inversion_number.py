@@ -16,8 +16,12 @@ class SegmentTree:
             self.node[idx] = v
         for idx in range(self.size -1 , 0, -1):
             self.node[idx] = self.func(self.node[idx<<1|0], self.node[idx<<1|1])
-    
-    def update(self, idx, value):
+
+    def get_value(self, idx):
+        idx += self.size
+        return self.node[idx]
+
+    def set_value(self, idx, value):
         idx += self.size
         self.node[idx] = value
         while idx > 1:
@@ -39,6 +43,7 @@ class SegmentTree:
             l >>= 1
             r >>= 1
         return self.func(val_l, val_r)
+
 
 def coordinate_compression(ls):
     sortedls = sorted(set(ls))
