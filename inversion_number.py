@@ -44,22 +44,31 @@ class SegmentTree:
             r >>= 1
         return self.func(val_l, val_r)
 
-
-def coordinate_compression(ls):
-    sortedls = sorted(set(ls))
-    dic = {v:i for i,v in enumerate(sortedls)}
-    # return dic
-    return list(map(lambda x:dic[x], ls))
-
 def inversion_number(ls):
+    def coordinate_compression(ls):
+        sortedls = sorted(set(ls))
+        dic = {v:i for i,v in enumerate(sortedls)}
+        # return dic
+        return list(map(lambda x:dic[x], ls))
+    ccls = coordinate_compression(ls)
     inv_num = 0
-    segtree = SegmentTree(0,lambda x,y:x+y,[0]*len(ls))
-    for idx in range(len(ls)):
-        inv_num += idx - segtree.fold(0, ls[idx])
-        segtree.update(ls[idx], 1)
+    segtree = SegmentTree(0,lambda x,y:x+y,[0]*len(ccls))
+    for idx in range(len(ccls)):
+        temp_val = segtree.get_value(ccls[idx])
+        inv_num += idx - segtree.fold(0, ccls[idx]) - temp_val
+        segtree.set_value(ccls[idx], temp_val + 1)
         # print(segtree.node[len(segtree.node)//2:],inv_num)
     return inv_num
 
+# import random
+# ls = []
+# for i in range(5):
+#     ls.append(random.randint(0,5))
+# for i in range(5):
+#     ls.append(random.randint(7,9))
+# print(ls)
+# ans=inversion_number(ls)
+# print(ans)
 
 """
 # pass ABC190 F - Shift and Inversions
@@ -71,4 +80,5 @@ for i in range(n):
     print(ans)
     ans+=n-1-a[i]
     ans-=a[i]
+
 """
