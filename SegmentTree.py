@@ -15,7 +15,11 @@ class SegmentTree:
             self.node[idx] = v
         for idx in range(self.size -1 , 0, -1):
             self.node[idx] = self.func(self.node[idx<<1|0], self.node[idx<<1|1])
-    
+
+    def get_value(self, idx):
+        idx += self.size
+        return self.node[idx]
+
     def update(self, idx, value):
         idx += self.size
         self.node[idx] = value
@@ -51,7 +55,8 @@ st=SegmentTree(e,fn,a)
 for i in range(q):
     t,x,y=map(int,input().split())
     if t==1:
-        a[x-1]^=y
-        st.update(x-1,a[x-1])
+        v=st.get_value(x-1)
+        # a[x-1]^=y
+        st.update(x-1,v^y)
     else:
         print(st.fold(x-1,y))
