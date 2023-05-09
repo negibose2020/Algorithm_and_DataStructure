@@ -19,3 +19,10 @@ def is_prime(n):
             return False
     return True
 
+# pass アルゴリズムと数学　演習問題集 012 - Primality Test
+# https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_l
+N = int(input())
+if is_prime(N):
+    print("Yes")
+else:
+    print("No")
